@@ -33,6 +33,7 @@ I faced difficulties in how to deal with Form in the beginning because the infor
 So I tried to search for how to deal with data taken from the Form on the server, and I found that the best way is to use Server actions available in next js with useActionState available from React.
 So it became easy
 
+it takes between 7-8 hours to complete
 
 /////////////////////
 
