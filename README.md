@@ -23,10 +23,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 # Please run json server first
 
 I used next js for SEO using meta data 
-And also because it is server side 
- render(ssr) 
+And also because it is server side render(ssr) 
 
-Secondly, I used JSON Server to simulate all restfull api like PUT and PUST and DELETE and GET
+Secondly, I used JSON Server to simulate all restfull api like PUT and PUST and DELETE and GET to create and edit and delete the posts then display it
 
 I used Context to handle the states between components
 
