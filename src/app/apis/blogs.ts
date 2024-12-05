@@ -1,7 +1,6 @@
 import { deleteType, paramsType } from "../interFaces/interFace";
 
-
-// this function alternative to old function getServerSideProps its not supported in app router
+// get all blogs
 export async function getAllBlogs() {
     try {
         const res = await fetch(`https://jsonplaceholder.typicode.com/posts`, {
@@ -18,7 +17,7 @@ export async function getAllBlogs() {
 }
 
 
-// this function alternative to old function getServerSideProps its not supported in app router
+// get blog details
 export async function getBlogDetails({ params }: { params: { blogId: paramsType } }) {
 
     try {
@@ -34,7 +33,7 @@ export async function getBlogDetails({ params }: { params: { blogId: paramsType 
 }
 
 
-// this function alternative to old function getServerSideProps its not supported in app router
+// get all my blogs
 export async function getAllMyBlogs() {
     try {
         let res = await fetch(`http://localhost:8000/posts`, {
@@ -49,7 +48,7 @@ export async function getAllMyBlogs() {
 }
 
 
-// this function alternative to old function getServerSideProps its not supported in app router
+// get all my blog details
 export async function getMyBlogDetails({ params }: { params: { myBlogId: paramsType } }) {
 
     try {
@@ -69,7 +68,6 @@ export async function getMyBlogDetails({ params }: { params: { myBlogId: paramsT
 
 
 // delete funcion
-
 export async function deleteMyBlog(id: deleteType) {
     try {
         let res = await fetch(`http://localhost:8000/posts/${id}`, {
@@ -82,3 +80,5 @@ export async function deleteMyBlog(id: deleteType) {
         console.log(error);
     }
 }
+
+// create and edit functions are in server actions componants

@@ -26,8 +26,7 @@ export default function FormToAdd() {
             <div>
                 <textarea required name='body' id="valueTwo" rows={4} className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:border-blue-500" placeholder="Leave a comment..." defaultValue={""} />
             </div>
-
-            <button disabled={isPending} type='submit' className='bg-emerald-500 rounded-lg px-10 w-full py-2 text-lg mt-5'>Add Blog</button>
+            <button disabled={isPending} type='submit' className='bg-yellow-500 font-semibold text-slate-800 rounded-lg px-10 w-full py-2 text-lg mt-5 hover:scale-110 hover:tracking-widest duration-300'>{isPending ? 'Pending ...' : 'Add Blog'}</button>
             {data?.error && <h1 className='py-3 px-4 w-full my-3 bg-red-600 rounded-lg text-white'>{data?.error}</h1>}
             {data?.message && <h1 className='py-3 px-4 w-full my-3 bg-emerald-600 rounded-lg text-slate-950'>{data?.message}</h1>}
         </form>
