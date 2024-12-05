@@ -35,7 +35,7 @@ So I tried to search for how to deal with data taken from the Form on the server
 So it became easy
 
 
-
+/////////////////////
 
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
