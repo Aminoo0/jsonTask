@@ -1,34 +1,12 @@
 import { Card } from "antd";
 import Link from "next/link";
 import { Suspense } from "react";
-
-interface blogsTypes {
-    title: string;
-    body: string;
-    id: number;
-}
-
-// this function alternative to old function getServerSideProps its not supported in app router
-async function getAllBlogs() {
-    try {
-        const res = await fetch(`https://jsonplaceholder.typicode.com/posts`, {
-            // cache: 'no-store',
-            next: { revalidate: 2 }
-        })
-        const data = await res.json()
-        console.log(data);
-
-        return data;
-    }
-    catch (error) {
-        console.log(error);
-    }
-}
-
+import { getAllBlogs } from "@/app/apis/blogs";
+import { blogsTypes } from "@/app/interFaces/interFace";
 
 export default async function Blogs() {
     const allBlogs = await getAllBlogs()
-    // console.log(allBlogs);
+    console.log(allBlogs);
 
     return (
         <Suspense fallback={<div className="loader mt-72 mx-auto"></div>}>

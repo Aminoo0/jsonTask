@@ -1,39 +1,32 @@
 'use client'
 import { IoCloseOutline } from "react-icons/io5";
 import toast from 'react-hot-toast';
-
-
-
 import { useRouter } from "next/navigation";
+import { deleteType } from "@/app/interFaces/interFace";
+import { deleteMyBlog } from "@/app/apis/blogs";
 
-interface deleteType {
-    id: string;
-}
 
-export default function DeleteButton({ blogId }: any) {
+export default function DeleteButton({ blogId }: deleteType) {
     let router = useRouter()
 
-    let AddBlog = async (id: deleteType) => {
-        try {
-            let res = await fetch(`http://localhost:8000/posts/${id}`, {
-                cache: 'no-store',
-                method: "DELETE",
-            })
-            if (res.status == 200) {
-                router.refresh();
-            }
-            toast.success('blog was deleted successfully', {
-                position: 'top-right',
-                duration: 4000,
-            })
+
+    async function deleteBlog(id: number) {
+        deleteMyBlog(id) as any
+        let res = await deleteMyBlog(id) as any
+        // console.log(res);
+        if (res?.status == 404) {
+            toast.success('blog has beed deleted ',
+                {
+                    position: 'top-right',
+                    duration: 4000,
+                }
+            )
+            router.refresh()
         }
-        catch (error) {
-            console.log(error);
-            toast.error(error)
-        }
+
     }
 
     return (
-        <IoCloseOutline onClick={() => AddBlog(blogId)} size={35} cursor={'pointer'} color="tomato" className="hover:rotate-90 duration-300" />
+        <IoCloseOutline onClick={() => deleteBlog(blogId)} size={35} cursor={'pointer'} color="tomato" className="hover:rotate-90 duration-300" />
     )
 }

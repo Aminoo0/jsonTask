@@ -1,28 +1,11 @@
+import { getMyBlogDetails } from "@/app/apis/blogs";
 import { Button, Card } from "antd";
 import { Suspense } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 
-
-// this function alternative to old function getServerSideProps its not supported in app router
-async function getBlogDetails({ params }: { params: { myBlogId: string }; }) {
-
-    try {
-        const res = await fetch(`http://localhost:8000/posts/${params.myBlogId}`, {
-            // cache: 'no-store',
-        })
-        const data = await res.json()
-        console.log(res);
-
-        return data;
-    }
-    catch (error) {
-        console.log(error);
-    }
-}
-
-export default async function page({ params }: { params: { myBlogId: string }; }) {
-    const data = await getBlogDetails({ params })
-    console.log(data);
+export default async function BlogDetails({ params }: { params: { myBlogId: string }; }) {
+    const data = await getMyBlogDetails({ params })
+    // console.log(data);
 
     return (
         <Suspense fallback={<div className="loader mt-72 mx-auto"></div>}>

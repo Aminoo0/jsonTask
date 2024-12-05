@@ -3,31 +3,11 @@ import FormToAdd from "../../(componants)/form/form";
 import Link from "next/link";
 import EditButton from "../../(componants)/editButton/editButton";
 import FormToEdit from "../../(componants)/formToEdit/formToEdit";
+import { getAllMyBlogs } from "@/app/apis/blogs";
+import { blogsTypes } from "@/app/interFaces/interFace";
 
-
-interface blogsTypes {
-    head: string;
-    title: string;
-    body: string;
-    id: number;
-}
-
-// this function alternative to old function getServerSideProps its not supported in app router
-async function getAllMyBlogs() {
-    try {
-        const res = await fetch(`http://localhost:8000/posts`, {
-            // cache: 'no-store',
-        })
-        const data = await res.json()
-        return data;
-    }
-    catch (error) {
-        console.log(error);
-    }
-}
 
 export default async function page() {
-
     const data = await getAllMyBlogs();
     // console.log(data);
 
@@ -48,9 +28,11 @@ export default async function page() {
                             </div>
                         </Link>
                         <div className="absolute top-7 right-20">
-                            <EditButton id={blog.id} />
+                            <EditButton id={blog?.id} />
                         </div>
-                        <div className="absolute top-7 right-10 z-10"><DeleteButton blogId={blog?.id} /></div>
+                        <div className="absolute top-7 right-10 z-10">
+                            <DeleteButton blogId={blog?.id} />
+                        </div>
                     </div>)}
             <FormToEdit />
         </div>

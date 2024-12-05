@@ -1,17 +1,12 @@
 'use client'
-
 import { useRouter } from 'next/navigation';
 import { useActionState, useEffect } from 'react';
 import { onFinish } from '../useServerForForm/onFinish';
 import toast from 'react-hot-toast';
 
-
-
-
 export default function FormToAdd() {
     let router = useRouter()
-    const [data, action, isPending] = useActionState(onFinish, undefined)
-    console.log(data);
+    const [data, action, isPending] = useActionState(onFinish, undefined) as any
 
     useEffect(() => {
         if (isPending) {
@@ -22,7 +17,6 @@ export default function FormToAdd() {
         }
         router.refresh()
     }, [isPending])
-
 
     return (
         <form action={action}>

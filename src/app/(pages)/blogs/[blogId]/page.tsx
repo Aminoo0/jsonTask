@@ -1,29 +1,10 @@
+import { getBlogDetails } from "@/app/apis/blogs";
 import { Button, Card } from "antd";
 import { Suspense } from "react";
 
-interface params {
-    blogId?: any;
-};
-
-// this function alternative to old function getServerSideProps its not supported in app router
-async function getBlogDetails(params: params) {
-
-    try {
-        const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.blogId}`, {
-            // cache: 'no-store',
-        })
-        const data = await res.json()
-        return data;
-    }
-    catch (error) {
-        console.log(error);
-
-    }
-}
-
 export default async function BlogDetails({ params }: { params: { blogId: number }; }) {
-    console.log(await params);
     const data = await getBlogDetails(params)
+    // console.log(await params);
 
     return (
         <Suspense fallback={<div className="loader mt-72 mx-auto"></div>}>

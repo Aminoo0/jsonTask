@@ -1,6 +1,7 @@
 'use server'
 
 export const onFinish = async (prev: any, formData: FormData) => {
+
     let head = formData.get('head')
     let body = formData.get('body')
     try {
