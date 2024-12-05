@@ -12,8 +12,8 @@ interface blogsTypes {
 async function getAllBlogs() {
     try {
         const res = await fetch(`https://jsonplaceholder.typicode.com/posts`, {
-            cache: 'no-store',
-            next: { revalidate: 0 }
+            // cache: 'no-store',
+            next: { revalidate: 2 }
         })
         const data = await res.json()
         console.log(data);
