@@ -1,10 +1,10 @@
 import { getBlogDetails } from "@/app/apis/blogs";
+import { paramsType } from "@/app/interFaces/interFace";
 import { Button, Card } from "antd";
 import { Suspense } from "react";
 
-export default async function BlogDetails({ params }: { params: { blogId: number }; }) {
-    const data = await getBlogDetails(params)
-    // console.log(await params);
+export default async function BlogDetails({ params }: { params: { blogId: paramsType } }) {
+    const data = await getBlogDetails({ params })
 
     return (
         <Suspense fallback={<div className="loader mt-72 mx-auto"></div>}>

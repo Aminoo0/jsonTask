@@ -5,7 +5,8 @@ export interface blogsTypes {
 }
 
 export interface paramsType {
-    blogId?: any;
+    blogId?: number;
+    myBlogId: number;
 };
 
 export interface blogsTypes {

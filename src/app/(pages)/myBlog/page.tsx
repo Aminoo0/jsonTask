@@ -1,5 +1,5 @@
 import DeleteButton from "../../(componants)/deleteButton/deleteButton";
-import FormToAdd from "../../(componants)/form/form";
+import FormToAdd from "../../(componants)/formToAdd/form";
 import Link from "next/link";
 import EditButton from "../../(componants)/editButton/editButton";
 import FormToEdit from "../../(componants)/formToEdit/formToEdit";
@@ -7,7 +7,7 @@ import { getAllMyBlogs } from "@/app/apis/blogs";
 import { blogsTypes } from "@/app/interFaces/interFace";
 
 
-export default async function page() {
+export default async function MyBlogs() {
     const data = await getAllMyBlogs();
     // console.log(data);
 

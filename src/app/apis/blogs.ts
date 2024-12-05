@@ -9,7 +9,6 @@ export async function getAllBlogs() {
             next: { revalidate: 2 }
         })
         const data = await res.json()
-        console.log(data);
 
         return data;
     }
@@ -20,10 +19,10 @@ export async function getAllBlogs() {
 
 
 // this function alternative to old function getServerSideProps its not supported in app router
-export async function getBlogDetails(params: paramsType) {
+export async function getBlogDetails({ params }: { params: { blogId: paramsType } }) {
 
     try {
-        const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.blogId}`, {
+        let res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params?.blogId}`, {
             // cache: 'no-store',
         })
         const data = await res.json()
@@ -31,7 +30,6 @@ export async function getBlogDetails(params: paramsType) {
     }
     catch (error) {
         console.log(error);
-
     }
 }
 
@@ -39,7 +37,7 @@ export async function getBlogDetails(params: paramsType) {
 // this function alternative to old function getServerSideProps its not supported in app router
 export async function getAllMyBlogs() {
     try {
-        const res = await fetch(`http://localhost:8000/posts`, {
+        let res = await fetch(`http://localhost:8000/posts`, {
             // cache: 'no-store',
         })
         const data = await res.json()
@@ -52,14 +50,14 @@ export async function getAllMyBlogs() {
 
 
 // this function alternative to old function getServerSideProps its not supported in app router
-export async function getMyBlogDetails({ params }: { params: { myBlogId: string }; }) {
+export async function getMyBlogDetails({ params }: { params: { myBlogId: paramsType } }) {
 
     try {
-        const res = await fetch(`http://localhost:8000/posts/${params.myBlogId}`, {
+        let res = await fetch(`http://localhost:8000/posts/${params?.myBlogId}`, {
             // cache: 'no-store',
         })
         const data = await res.json()
-        console.log(res);
+        // console.log(res);
 
         return data;
     }

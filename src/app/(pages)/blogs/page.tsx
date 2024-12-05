@@ -6,7 +6,6 @@ import { blogsTypes } from "@/app/interFaces/interFace";
 
 export default async function Blogs() {
     const allBlogs = await getAllBlogs()
-    console.log(allBlogs);
 
     return (
         <Suspense fallback={<div className="loader mt-72 mx-auto"></div>}>
